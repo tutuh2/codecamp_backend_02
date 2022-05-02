@@ -1,0 +1,231 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Type {
+  id: String!
+  name: String!
+}
+
+type Model {
+  id: String!
+  name: String!
+  range: Int!
+  speed: Int!
+  zeroHundred: Int!
+  modelPrice: Int!
+  type: Type!
+}
+
+type AutoPilot {
+  id: String!
+  isAuto: Boolean!
+  price: Int!
+  model: Model!
+}
+
+type Product {
+  id: String!
+  name: String!
+  price: Int!
+  description: String!
+  date: DateTime!
+  productTag: [ProductTag!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ProductTag {
+  id: String!
+  name: String!
+  product: [Product!]!
+}
+
+type Board {
+  number: Int!
+  writer: String!
+  title: String!
+  contents: String!
+}
+
+type Color {
+  id: String!
+  colorName: String!
+  model: Model!
+}
+
+type Interior {
+  id: String!
+  interiorColor: String!
+  model: Model!
+}
+
+type Seat {
+  id: String!
+  isSeat: Boolean!
+  seatLayout: Int!
+  model: Model!
+}
+
+type WheelDrive {
+  id: String!
+  wheelDrive: String!
+  model: Model!
+}
+
+type Wheelsize {
+  id: String!
+  size: Int!
+  name: String!
+  price: Int!
+  model: Model!
+}
+
+type User {
+  id: String!
+  email: String!
+  name: String!
+  age: Int!
+}
+
+type Query {
+  fetchBoard: [Board!]!
+  fetchProducts: [Product!]!
+  fetchProductsDeleted: [Product!]!
+  fetchProduct(productId: String!): Product!
+  fetchModels: [Model!]!
+  fetchModelsDeleted: [Model!]!
+  fetchModel(modelId: String!): Model!
+  fetchAutoPilots: [AutoPilot!]!
+  fetchAutoPilot(autoPilotId: String!): AutoPilot!
+  fetchColors: [Color!]!
+  fetchColor(colorId: String!): Color!
+  fetchInteriors: [Interior!]!
+  fetchInterior(interiorId: String!): Interior!
+  fetchSeats: [Seat!]!
+  fetchSeat(seatId: String!): Seat!
+  fetchWheelDrives: [WheelDrive!]!
+  fetchWheelDrive(wheelDriveId: String!): WheelDrive!
+  fetchWheelsizes: [Wheelsize!]!
+  fetchWheelsize(wheelsizeId: String!): Wheelsize!
+  fetchUsers: [User!]!
+  fetchUser(email: String!): User!
+  fetchTest: String!
+}
+
+type Mutation {
+  login(email: String!, password: String!): String!
+  createBoard(writer: String!, title: String!, contents: String!, createBoardInput: CreateBoardInput!): String!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(productId: String!): Boolean!
+  restoreModel(modelId: String!): Boolean!
+  createModel(createModelInput: CreateModelInput!): Model!
+  updateModel(modelId: String!, updateModelInput: UpdateModelInput!): Model!
+  deleteModel(productId: String!): Boolean!
+  createAutoPilot(createAutoPilotInput: CreateAutoPilotInput!): AutoPilot!
+  updateAutoPilot(autoPilotId: String!, updateAutoPilotInput: UpdateAutoPilotInput!): AutoPilot!
+  deleteAutoPilot(autoPilotId: String!): Boolean!
+  createColor(createColorInput: CreateColorInput!): Color!
+  updateColor(colorId: String!, updateColorInput: UpdateColorInput!): Color!
+  deleteColor(colorId: String!): Boolean!
+  createInterior(createInteriorInput: CreateInteriorInput!): Interior!
+  deleteInterior(interiorId: String!): Boolean!
+  createType(name: String!): Type!
+  createSeat(createSeatInput: CreateSeatInput!): Seat!
+  deleteSeat(seatId: String!): Boolean!
+  createWheelDrive(createWheelDriveInput: CreateWheelDriveInput!): WheelDrive!
+  deleteWheelDrive(wheelDriveId: String!): Boolean!
+  createWheelsize(createWheelsizeInput: CreateWheelsizeInput!): Wheelsize!
+  deleteWheelsize(wheelsizeId: String!): Boolean!
+  createUser(email: String!, password: String!, name: String!, age: Float!): User!
+  deleteUser(userId: String!): Boolean!
+}
+
+input CreateBoardInput {
+  writer: String!
+  title: String!
+  contents: String!
+}
+
+input CreateProductInput {
+  name: String!
+  description: String!
+  price: Int!
+  date: DateTime!
+  productTag: [String!]!
+}
+
+input UpdateProductInput {
+  name: String
+  description: String
+  price: Int
+  date: DateTime
+  productTag: [String!]
+}
+
+input CreateModelInput {
+  name: String!
+  range: Int!
+  speed: Int!
+  zeroHundred: Float!
+  modelPrice: Int!
+  typeId: String!
+}
+
+input UpdateModelInput {
+  name: String
+  range: Int
+  speed: Int
+  zeroHundred: Float
+  modelPrice: Int
+  typeId: String
+}
+
+input CreateAutoPilotInput {
+  isAuto: Boolean!
+  price: Int!
+  modelId: String!
+}
+
+input UpdateAutoPilotInput {
+  isAuto: Boolean
+  price: Int
+  modelId: String
+}
+
+input CreateColorInput {
+  colorName: String!
+  modelId: String!
+}
+
+input UpdateColorInput {
+  colorName: String
+  modelId: String
+}
+
+input CreateInteriorInput {
+  interiorColor: String!
+  modelId: String!
+}
+
+input CreateSeatInput {
+  isSeat: Boolean!
+  seatLayout: Int!
+  modelId: String!
+}
+
+input CreateWheelDriveInput {
+  wheelDrive: String!
+  modelId: String!
+}
+
+input CreateWheelsizeInput {
+  size: Int!
+  name: String!
+  price: Int!
+  modelId: String!
+}

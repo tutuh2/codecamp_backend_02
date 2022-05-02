@@ -1,0 +1,108 @@
+show databases
+;
+
+use myproject02
+;
+
+show tables
+;
+
+desc product
+;
+
+select *
+	from product
+;
+
+insert into product(id, name, description, price, isSoldout)
+			values(uuid(), '마우스', '정말 좋은 마우스입니다!!!22', 15000, false)
+;
+
+insert into product(id, name, description, price, isSoldout)
+			values(uuid(), '노트북', '최신 맥북', 20000, false)
+;
+
+select *
+	from product_saleslocation
+;
+
+insert into product_saleslocation(id,address,addressDetail,lat,lng,meetingTime)
+			values(uuid(),'구로구', '구로디지털단지역', 0.0, 0.1, '2022-12-31' )
+;
+
+
+
+update product 
+	set name = '키보드'
+where price = 15000
+;
+
+select price, isSoldout 
+	from product
+where name = '노트북'
+;
+
+update product
+	set productSalesLocationId = '6c9a72b4-b3ed-11ec-9a3b-00d861855ab6'
+ where name = '키보드'
+;
+
+select *
+	from product p
+;
+
+select *
+	from product_saleslocation
+;
+
+select p.id, p.name, p.price, ps.address, ps.addressDetail
+	from product p, product_saleslocation ps
+ where p.productSalesLocationId = ps.id
+;
+
+select *
+	from product_category
+;
+
+insert into product_category (id, name)
+		values(uuid(), '전자기기')
+;
+
+insert into product_category (id,name)
+		values(uuid(), '컴퓨터 액세서리')
+;
+
+insert into product_category (id,name)
+		values(uuid(), '마우스')
+;
+
+insert into product_category (id,name)
+		values(uuid(), '컴퓨터')
+;
+
+update product 
+	set productCategoryID = '143b2a85-b3f1-11ec-9a3b-00d861855ab6'
+	where name = '키보드'
+;
+
+select p.id, p.name as '상품명', p.price, pc.id , pc.name as '카테고리명'  
+	from product p, product_category pc 
+ where p.productCategoryId  = pc.id 
+;
+
+
+;;;;;;;;;;;;;;;;;;;;퀴즈;;;;;;;;;;;;;;;;;;;
+insert into product_category (id,name) values (uuid(),'의류');
+
+select * from product_category pc ;
+
+insert into product (id,name,description,price, isSoldout)
+			values (uuid(), '셔츠', '깨끗한 셔츠', 3000, false)
+;
+
+select * from product;
+
+update product
+	set productCategoryId= '143b2a85-b3f1-11ec-9a3b-00d861855ab6'
+	where name = '노트북'
+;

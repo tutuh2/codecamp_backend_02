@@ -10,6 +10,8 @@ import { AuthModule } from './apis/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { PointTransactionModule } from './apis/pointTransaction/pointTransaction.module';
 import { FileModule } from './apis/file/file.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 // import { AppController } from './app.controller';
 // import { AppService } from './app.service';
 
@@ -40,7 +42,7 @@ import { FileModule } from './apis/file/file.module';
             logging: true,
         }),
     ],
-    // controllers: [AppController],
-    // providers: [AppService],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}

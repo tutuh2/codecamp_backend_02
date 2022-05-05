@@ -2,6 +2,8 @@ version: '3.7'
 
 services:
   my-backend:
+    image: asia.gcr.io/backend02/my-backend02:3.6
+    platform: linux/x86_64
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,4 +21,3 @@ services:
   #     MYSQL_DATABASE: 'mydocker02'
   #     MYSQL_ROOT_PASSWORD: 'root'
   #   ports:
-  #     - 3306:3306

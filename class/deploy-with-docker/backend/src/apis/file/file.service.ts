@@ -11,7 +11,7 @@ interface IFile {
 export class FileService {
     async upload({ files }: IFile) {
         const storage = new Storage({
-            keyFilename: 'backend02-e1dfb46478a1.json',
+            keyFilename: '/my-secret/gcp-file-storage.json',
             projectId: 'backend02',
         }).bucket('thumb-codecamp-storage13');
 

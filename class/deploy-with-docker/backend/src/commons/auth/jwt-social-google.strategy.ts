@@ -6,9 +6,8 @@ import { Strategy } from 'passport-google-oauth20';
 export class JwtGoogleStrategy extends PassportStrategy(Strategy, 'google') {
     constructor() {
         super({
-            clientID:
-                '521286848441-avj1kik685gae1rkmvp2t4l7tkc6j3rg.apps.googleusercontent.com',
-            clientSecret: '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',
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: 'http://localhost:3000/login/google',
             scope: ['email', 'profile'],
         });
